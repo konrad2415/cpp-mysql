@@ -13,17 +13,16 @@ int main()
      int i = 0;
      int var[100];
 
-     fp = fopen("./config.inc","r");
+     fp = fopen("config.inc","r");
      while(fgets(buff,sizeof(buff),fp))
      {
           for(i=0;i<strlen(buff);i++)
           {
-               if(isdigit(buff[i]))
-               {
-                    var[i] = buff[i] - 48;
-                    printf("%d",var[i]);
-                    printf("\n");
-                }
+
+                    //var[i] = buff[i] - 48;
+                    printf("%c",buff[i]);
+                    //printf("\n");
+
           }
      }
 
