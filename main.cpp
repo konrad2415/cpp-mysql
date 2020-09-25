@@ -1,22 +1,35 @@
-#include <iostream>
-#include <windows.h>
-#include <mysql.h>
+#define size 80
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 using namespace std;
 
 int main()
 {
-    MYSQL* conn;
+     FILE *fp;
+     char buff[100];
+     int i = 0;
+     int var[100];
 
-     conn = mysql_init(0);
+     fp = fopen("./config.inc","r");
+     while(fgets(buff,sizeof(buff),fp))
+     {
+          for(i=0;i<strlen(buff);i++)
+          {
+               if(isdigit(buff[i]))
+               {
+                    var[i] = buff[i] - 48;
+                    printf("%d",var[i]);
+                    printf("\n");
+                }
+          }
+     }
 
-     conn = mysql_real_connect(conn,"localhost","konrad","ycgalardy","mca",0,NULL,0);
+     printf("\n\n\n\n");
 
-     if(conn)
-        cout<<"connection to mca databse successful "<<endl;
-     else
-        cout<<"connection problem: "<<mysql_error(conn)<<endl;
 
-    cout << "Tronco Macho hecho super cool !" << endl;
-    return 0;
+     system("pause");
+     return 0;
 }
